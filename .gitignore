@@ -1,0 +1,18 @@
+# Arquivos de compilação e executáveis
+*.exe
+*.o
+*.obj
+output/
+
+# Configurações do VSCode
+.vscode/
+
+# Configurações do Code::Blocks
+*.cbp
+*.depend
+*.layout
+bin/
+obj/
+
+# Arquivos temporários do Windows
+Thumbs.db
