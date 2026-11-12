@@ -1,4 +1,3 @@
-#Markdown
 #UEPG - Engenharia de Software - Programação de Computadores
 
 ##Trabalho: Jogo Space Invaders em C++ com a biblioteca Raylib
