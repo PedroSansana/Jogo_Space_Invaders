@@ -1,6 +1,9 @@
-# Welcome to GitHub Desktop!
+#UEPG - Engenharia de Software - Programação de Computadores
 
-This is your README. READMEs are where you can communicate what your project is and how to use it.
+##Trabalho: Jogo Space Invaders em C++ com a biblioteca Raylib
 
-Write your name on line 6, save it, and then head back to GitHub Desktop.
-Pedro Sansana
+##Integrantes: 
+- Gabriel Colman Martins — GitHub: GabrielColman07
+- Lucas Van Santen Senchechem — GitHub: LucasSenchechem
+- Pedro Gabriel Sansana — GitHub: PedroSansana
+- Vinicius Miara Staichoki — GitHub: Vinicius_Miara_Staichocki
