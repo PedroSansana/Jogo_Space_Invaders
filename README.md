@@ -1,8 +1,8 @@
-#UEPG - Engenharia de Software - Programação de Computadores
+# UEPG - Engenharia de Software - Programação de Computadores
 
-##Trabalho: Jogo Space Invaders em C++ com a biblioteca Raylib
+## Trabalho: Jogo Space Invaders em C++ com a biblioteca Raylib
 
-##Integrantes: 
+## Integrantes: 
 - Gabriel Colman Martins — GitHub: GabrielColman07
 - Lucas Van Santen Senchechem — GitHub: LucasSenchechem
 - Pedro Gabriel Sansana — GitHub: PedroSansana
