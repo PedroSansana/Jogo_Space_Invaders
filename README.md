@@ -6,7 +6,7 @@ O trabalho consiste em desenvolver um jogo 2D simples em C++, com a biblioteca R
 
 ## Integrantes: 
 - Gabriel Colman Martins — RA: 
-- Lucas Van Santen Senchechem — RA: 
+- Lucas Van Santen Senchechem — RA: 26036723
 - Pedro Gabriel Sansana — RA: 26013823
 - Vinicius Miara Staichoki — RA: 
 
