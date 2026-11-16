@@ -1,5 +1,5 @@
 #include <raylib.h>
-#include "nave.hpp"
+#include "jogo.hpp"
 int main(){
     int larguraJanela = 720;
     int alturaJanela = 700;
@@ -7,12 +7,13 @@ int main(){
     InitWindow(larguraJanela, alturaJanela, "Space Invaders");
     SetTargetFPS(60);
 
-    Nave nave;
+    Jogo jogo;
 
     while(WindowShouldClose() == false){
+        jogo.inputUsuario();
         BeginDrawing();
             ClearBackground(cinza);
-            nave.desenha();
+            jogo.desenha();
         EndDrawing();
     }
     CloseWindow();
