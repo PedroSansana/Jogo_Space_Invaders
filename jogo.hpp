@@ -9,5 +9,6 @@ class Jogo{
         void atualiza();
         void inputUsuario();
     private:
+    void apagaLaserInativo();
+    Nave nave;
 };
-Nave nave;

@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "jogo.hpp"
+
 int main(){
     int larguraJanela = 720;
     int alturaJanela = 700;
@@ -10,7 +11,9 @@ int main(){
     Jogo jogo;
 
     while(WindowShouldClose() == false){
+
         jogo.inputUsuario();
+        jogo.atualiza();
         BeginDrawing();
             ClearBackground(cinza);
             jogo.desenha();
