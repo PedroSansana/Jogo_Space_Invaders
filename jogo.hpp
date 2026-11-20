@@ -1,5 +1,6 @@
 #pragma once
 #include "nave.hpp"
+#include "obstaculo.hpp"
 
 class Jogo{
     public:
@@ -9,6 +10,8 @@ class Jogo{
         void atualiza();
         void inputUsuario();
     private:
-    void apagaLaserInativo();
-    Nave nave;
+        void apagaLaserInativo();
+        std::vector<Obstaculo> CriarObstaculos();
+        Nave nave;
+        std::vector<Obstaculo> obstaculos;
 };

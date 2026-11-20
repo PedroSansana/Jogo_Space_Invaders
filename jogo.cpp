@@ -2,7 +2,7 @@
 #include <iostream>
 Jogo::Jogo()
 {
-
+    obstaculos = CriarObstaculos();
 }
 Jogo::~Jogo(){
 
@@ -13,13 +13,16 @@ void Jogo::atualiza(){
         laser.Atualiza();
     }
     apagaLaserInativo();
-    std::cout << "Vector Size: " << nave.lasers.size() << std::endl;
 }
 
 void Jogo::desenha(){
     nave.desenha();
     for(auto& laser: nave.lasers){
         laser.Desenha();
+    }
+
+    for(auto& obstaculo: obstaculos){
+        obstaculo.Desenha();
     }
 }
 
@@ -42,4 +45,16 @@ void Jogo::apagaLaserInativo()
             ++ i;
         }
     }
+}
+
+std::vector<Obstaculo> Jogo::CriarObstaculos()
+{
+    int larguraObstaculo = Obstaculo::grade[0].size()*3;
+    float vao = (GetScreenWidth() - (4 * larguraObstaculo))/5;
+    
+    for(int i = 0; i < 4; i++){
+        float distanciaX = (i+1) * vao + i * larguraObstaculo;
+        obstaculos.push_back(Obstaculo({distanciaX, float (GetScreenHeight() - 100)}));
+    }
+    return obstaculos;
 }
