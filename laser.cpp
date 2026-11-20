@@ -15,7 +15,6 @@ void Laser::Atualiza(){
     if(ativo){
         if(posicao.y > GetScreenHeight() || posicao.y < 0){
             ativo = false;
-            std::cout << "Laser inativo " << std::endl;
         }
     }
 }
