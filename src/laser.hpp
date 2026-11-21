@@ -6,6 +6,7 @@ class Laser{
         Laser(Vector2 posicao, int velocidade);
         void Atualiza();
         void Desenha();
+        Rectangle GeraRetangulo();
         bool ativo;
     private:
         Vector2 posicao;

@@ -10,6 +10,7 @@ class Nave{
         void direita();
         void esquerda();
         void atiralaser();
+        Rectangle GeraRetangulo();
         std::vector<Laser> lasers;
     private:
     Texture2D imagem;

@@ -10,7 +10,17 @@ void Laser::Desenha(){
         DrawRectangle(posicao.x, posicao.y, 4, 15, {243, 216, 63, 255});
     }
 }
-void Laser::Atualiza(){
+Rectangle Laser::GeraRetangulo()
+{
+    Rectangle retangulo;
+    retangulo.x = posicao.x;
+    retangulo.y = posicao.y;
+    retangulo.width = 4;
+    retangulo.height = 15;
+    return retangulo;
+}
+void Laser::Atualiza()
+{
     posicao.y += velocidade;
     if(ativo){
         if(posicao.y > GetScreenHeight() || posicao.y < 0){

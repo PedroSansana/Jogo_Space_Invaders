@@ -34,6 +34,8 @@ void Jogo::atualiza(){
     apagaLaserInativo();
 
     naveMisteriosa.Atualiza();
+
+    ColisaoRetangulo();
 }
 
 void Jogo::desenha(){
@@ -147,5 +149,72 @@ void Jogo::AlienAtiraLaser()
         Alien& alien = aliens[random];
         laserAlien.push_back(Laser({alien.posicao.x + alien.imagemAlien[alien.tipo - 1].width/2,   alien.posicao.y + alien.imagemAlien[alien.tipo - 1].height}, 6));
         tempoUltimoAlienAtirou = GetTime();
+    }
+}
+
+void Jogo::ColisaoRetangulo()
+{
+    //Lasers
+    for(auto& laser: nave.lasers){
+        auto i = aliens.begin();
+        while(i != aliens.end()){
+            if(CheckCollisionRecs(i -> GeraRetangulo(), laser.GeraRetangulo())){
+                i = aliens.erase(i);
+                laser.ativo = false;
+            }else {
+                ++i;
+            }
+        }
+        for(auto& obstaculo: obstaculos){
+            auto i = obstaculo.blocos.begin();
+            while(i != obstaculo.blocos.end()){
+                if(CheckCollisionRecs(i ->  GeraRetangulo(), laser.GeraRetangulo())){
+                    i = obstaculo.blocos.erase(i);
+                    laser.ativo = false;
+                }else{
+                    ++i;
+                }
+            }
+        }
+        if(CheckCollisionRecs(naveMisteriosa.GeraRetangulo(), laser.GeraRetangulo())){
+            naveMisteriosa.vivo = false;
+            laser.ativo = false;
+        }
+    }
+    
+    //Laser dos aliens
+    for(auto& laser: laserAlien){
+        if(CheckCollisionRecs(laser.GeraRetangulo(), nave.GeraRetangulo())){
+            laser.ativo = false;
+            std::cout << "Nave atingida" << std::endl;
+        }
+         for(auto& obstaculo: obstaculos){
+            auto i = obstaculo.blocos.begin();
+            while(i != obstaculo.blocos.end()){
+                if(CheckCollisionRecs(i ->  GeraRetangulo(), laser.GeraRetangulo())){
+                    i = obstaculo.blocos.erase(i);
+                    laser.ativo = false;
+                }else{
+                    ++i;
+                }
+            }
+        }
+    }
+
+    //Colisão de aliens (sprite) com os obstáculos
+    for(auto& alien: aliens){
+        for(auto& obstaculo: obstaculos){
+            auto i = obstaculo.blocos.begin();
+            while(i != obstaculo.blocos.end()){
+                if(CheckCollisionRecs(i -> GeraRetangulo(), alien.GeraRetangulo())){
+                    i = obstaculo.blocos.erase(i);
+                }else {
+                    i++;
+                }
+            }
+        }
+        if(CheckCollisionRecs(alien.GeraRetangulo(), nave.GeraRetangulo())){
+            std::cout << "Nave atingida por um alien" << std::endl;
+        }
     }
 }

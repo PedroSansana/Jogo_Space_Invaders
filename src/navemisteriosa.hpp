@@ -8,6 +8,7 @@ class NaveMisteriosa{
         void Atualiza();
         void Desenha();
         void Spawna();
+        Rectangle GeraRetangulo();
         bool vivo;
     private:
         Vector2 posicao;

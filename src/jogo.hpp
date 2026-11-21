@@ -18,6 +18,7 @@ class Jogo{
         void MoveAliens();
         void MoveAliensY(int distancia);
         void AlienAtiraLaser();
+        void ColisaoRetangulo();
         Nave nave;
         std::vector<Obstaculo> obstaculos;
         std::vector<Alien> aliens;

@@ -37,3 +37,8 @@ void Nave::atiralaser()
         tempoUltimoTiro = GetTime();
     }
 }
+
+Rectangle Nave::GeraRetangulo()
+{
+    return {posicao.x, posicao.y, float(imagem.width), float(imagem.height)};
+}

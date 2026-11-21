@@ -8,6 +8,7 @@ class Alien{
         void Atualiza(int direcao);
         int GetTipo();
         static void UnloadImagens();
+        Rectangle GeraRetangulo();
         static Texture2D imagemAlien[3];
         int tipo;
         Vector2 posicao;
