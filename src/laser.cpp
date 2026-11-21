@@ -23,7 +23,7 @@ void Laser::Atualiza()
 {
     posicao.y += velocidade;
     if(ativo){
-        if(posicao.y > GetScreenHeight() || posicao.y < 0){
+        if(posicao.y > GetScreenHeight() - 100 || posicao.y < 25){
             ativo = false;
         }
     }

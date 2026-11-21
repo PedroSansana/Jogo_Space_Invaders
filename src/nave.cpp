@@ -3,7 +3,7 @@
 Nave::Nave(){
     imagem = LoadTexture("graficos/nave.png");
     posicao.x = (GetScreenWidth() - imagem.width)/2;
-    posicao.y = GetScreenHeight() - imagem.height;
+    posicao.y = GetScreenHeight() - imagem.height - 100;
     tempoUltimoTiro = 0.0;
 }
 
@@ -17,16 +17,16 @@ void Nave::desenha(){
 
 void Nave::esquerda(){
     posicao.x -= 7;
-    if(posicao.x < 0){
-        posicao.x = 0;
+    if(posicao.x < 25){
+        posicao.x = 25;
     }
 }
 
 void Nave::direita()
 {
     posicao.x += 7;
-    if(posicao.x > GetScreenWidth() - imagem.width){
-        posicao.x = GetScreenWidth() - imagem.width;
+    if(posicao.x > GetScreenWidth() - imagem.width - 25){
+        posicao.x = GetScreenWidth() - imagem.width - 25;
     }
 }
 
@@ -36,6 +36,13 @@ void Nave::atiralaser()
         lasers.push_back(Laser({posicao.x + imagem.width/2 -2, posicao.y}, -6));
         tempoUltimoTiro = GetTime();
     }
+}
+
+void Nave::Restart()
+{
+    posicao.x = (GetScreenWidth() - imagem.width)/2.0f;
+    posicao.y = GetScreenHeight() - imagem.height - 100;
+    lasers.clear();
 }
 
 Rectangle Nave::GeraRetangulo()

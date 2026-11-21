@@ -10,6 +10,7 @@ class Nave{
         void direita();
         void esquerda();
         void atiralaser();
+        void Restart();
         Rectangle GeraRetangulo();
         std::vector<Laser> lasers;
     private:

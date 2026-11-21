@@ -7,35 +7,45 @@ Jogo::Jogo()
     direcaoAliens = 1;
     tempoUltimoAlienAtirou = 0;
     intervaloSpawnMS = GetRandomValue(10, 20);
+    vidas = 3;
+    runJogo = true;
     tempoUltimoSpawn = 0;
+    iniciaJogo();
 }
 Jogo::~Jogo(){
     Alien::UnloadImagens();
 }
 
 void Jogo::atualiza(){
+    if(runJogo){
 
-    double tempoAtual = GetTime();
-    if(tempoAtual - tempoUltimoSpawn > intervaloSpawnMS){
-        naveMisteriosa.Spawna();
-        tempoUltimoSpawn = GetTime();
-        intervaloSpawnMS = GetRandomValue(10, 20);
-    }
-    for(auto& laser: nave.lasers){
-        laser.Atualiza();
-    }
-    MoveAliens();
+        double tempoAtual = GetTime();
+        if(tempoAtual - tempoUltimoSpawn > intervaloSpawnMS){
+            naveMisteriosa.Spawna();
+            tempoUltimoSpawn = GetTime();
+            intervaloSpawnMS = GetRandomValue(10, 20);
+        }
+        for(auto& laser: nave.lasers){
+            laser.Atualiza();
+        }
+        MoveAliens();
 
-    AlienAtiraLaser();
-    for(auto& laser: laserAlien){
-        laser.Atualiza();
-    }
+        AlienAtiraLaser();
+        for(auto& laser: laserAlien){
+            laser.Atualiza();
+        }
 
-    apagaLaserInativo();
+        apagaLaserInativo();
 
-    naveMisteriosa.Atualiza();
+        naveMisteriosa.Atualiza();
 
-    ColisaoRetangulo();
+        ColisaoRetangulo();
+    } else {
+        if(IsKeyDown(KEY_ENTER)){
+            Restart();
+            iniciaJogo();
+        }
+    }  
 }
 
 void Jogo::desenha(){
@@ -60,12 +70,14 @@ void Jogo::desenha(){
 }
 
 void Jogo::inputUsuario(){
-    if(IsKeyDown(KEY_LEFT)){
-        nave.esquerda();
-    }else if(IsKeyDown(KEY_RIGHT)){
-        nave.direita();
-    }else if(IsKeyDown(KEY_SPACE)){
-        nave.atiralaser();
+    if(runJogo){
+        if(IsKeyDown(KEY_LEFT)){
+            nave.esquerda();
+        }else if(IsKeyDown(KEY_RIGHT)){
+            nave.direita();
+        }else if(IsKeyDown(KEY_SPACE)){
+            nave.atiralaser();
+        }
     }
 }
 
@@ -94,7 +106,7 @@ std::vector<Obstaculo> Jogo::CriarObstaculos()
     
     for(int i = 0; i < 4; i++){
         float distanciaX = (i+1) * vao + i * larguraObstaculo;
-        obstaculos.push_back(Obstaculo({distanciaX, float (GetScreenHeight() - 100)}));
+        obstaculos.push_back(Obstaculo({distanciaX, float (GetScreenHeight() - 200)}));
     }
     return obstaculos;
 }
@@ -122,11 +134,11 @@ std::vector<Alien> Jogo::CriarAliens()
 
 void Jogo::MoveAliens(){
     for(auto& alien: aliens){
-        if(alien.posicao.x + alien.imagemAlien[alien.tipo - 1].width > GetScreenWidth()){
+        if(alien.posicao.x + alien.imagemAlien[alien.tipo - 1].width > GetScreenWidth() - 25){
             direcaoAliens = -1;
             MoveAliensY(4);
         }
-        if(alien.posicao.x < 0){
+        if(alien.posicao.x < 25){
             direcaoAliens = 1;
             MoveAliensY(4);
         }
@@ -186,7 +198,10 @@ void Jogo::ColisaoRetangulo()
     for(auto& laser: laserAlien){
         if(CheckCollisionRecs(laser.GeraRetangulo(), nave.GeraRetangulo())){
             laser.ativo = false;
-            std::cout << "Nave atingida" << std::endl;
+            vidas--;
+            if(vidas == 0){
+                GameOver();
+            }
         }
          for(auto& obstaculo: obstaculos){
             auto i = obstaculo.blocos.begin();
@@ -214,7 +229,31 @@ void Jogo::ColisaoRetangulo()
             }
         }
         if(CheckCollisionRecs(alien.GeraRetangulo(), nave.GeraRetangulo())){
-            std::cout << "Nave atingida por um alien" << std::endl;
+            GameOver();
         }
     }
+}
+
+void Jogo::GameOver()
+{
+    runJogo = false;
+}
+
+void Jogo::iniciaJogo()
+{
+     obstaculos = CriarObstaculos();
+    aliens = CriarAliens();
+    direcaoAliens = 1;
+    tempoUltimoAlienAtirou = 0;
+    intervaloSpawnMS = GetRandomValue(10, 20);
+    vidas = 3;
+    runJogo = true;
+    tempoUltimoSpawn = 0;
+}
+
+void Jogo::Restart(){
+    nave.Restart();
+    aliens.clear();
+    laserAlien.clear();
+    obstaculos.clear();
 }
