@@ -39,6 +39,15 @@ void Alien::UnloadImagens()
     }
 }
 
+Rectangle Alien::GeraRetangulo()
+{
+    return {
+        posicao.x, posicao.y,
+        float(imagemAlien[tipo -1].width),
+        float(imagemAlien[tipo -1].height)
+    };
+}
+
 void Alien::Atualiza(int direcao){
     posicao.x += direcao;
 }

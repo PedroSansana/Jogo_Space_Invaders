@@ -23,6 +23,15 @@ void NaveMisteriosa::Spawna(){
     vivo = true;
 }
 
+Rectangle NaveMisteriosa::GeraRetangulo()
+{
+    if(vivo){
+        return {posicao.x, posicao.y, float(imagem.width), float(imagem.height)};
+    }else{
+        return {posicao.x, posicao.y, 0, 0};
+    }
+}
+
 void NaveMisteriosa::Atualiza(){
     if(vivo){
         posicao.x += velocidade;
