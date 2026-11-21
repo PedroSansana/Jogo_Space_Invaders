@@ -2,6 +2,7 @@
 #include "nave.hpp"
 #include "obstaculo.hpp"
 #include "alien.hpp"
+#include "navemisteriosa.hpp"
 
 class Jogo{
     public:
@@ -24,4 +25,7 @@ class Jogo{
         int direcaoAliens;
         constexpr static float intervaloAlienAtiraLaser = 0.35;
         float tempoUltimoAlienAtirou;
+        NaveMisteriosa naveMisteriosa;
+        float intervaloSpawnMS;
+        float tempoUltimoSpawn;
 };

@@ -6,12 +6,21 @@ Jogo::Jogo()
     aliens = CriarAliens();
     direcaoAliens = 1;
     tempoUltimoAlienAtirou = 0;
+    intervaloSpawnMS = GetRandomValue(10, 20);
+    tempoUltimoSpawn = 0;
 }
 Jogo::~Jogo(){
     Alien::UnloadImagens();
 }
 
 void Jogo::atualiza(){
+
+    double tempoAtual = GetTime();
+    if(tempoAtual - tempoUltimoSpawn > intervaloSpawnMS){
+        naveMisteriosa.Spawna();
+        tempoUltimoSpawn = GetTime();
+        intervaloSpawnMS = GetRandomValue(10, 20);
+    }
     for(auto& laser: nave.lasers){
         laser.Atualiza();
     }
@@ -24,6 +33,7 @@ void Jogo::atualiza(){
 
     apagaLaserInativo();
 
+    naveMisteriosa.Atualiza();
 }
 
 void Jogo::desenha(){
@@ -43,6 +53,8 @@ void Jogo::desenha(){
     for(auto& laser: laserAlien){
         laser.Desenha();
     }
+
+    naveMisteriosa.Desenha();
 }
 
 void Jogo::inputUsuario(){
