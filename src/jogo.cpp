@@ -1,5 +1,6 @@
 #include "jogo.hpp"
 #include <iostream>
+#include <fstream>
 Jogo::Jogo()
 {
     obstaculos = CriarObstaculos();
@@ -178,6 +179,8 @@ void Jogo::ColisaoRetangulo()
                 }else if(i -> tipo == 3){
                     pontuacao += 300;
                 }
+
+                checarPontMaxima();
                 i = aliens.erase(i);
                 laser.ativo = false;
             }else {
@@ -199,6 +202,7 @@ void Jogo::ColisaoRetangulo()
             naveMisteriosa.vivo = false;
             laser.ativo = false;
             pontuacao += 500;
+            checarPontMaxima();
         }
     }
     
@@ -258,6 +262,39 @@ void Jogo::iniciaJogo()
     runJogo = true;
     tempoUltimoSpawn = 0;
     pontuacao = 0;
+    pontuacaoMaxima = carregaPontMaximaArquivo();
+}
+
+void Jogo::checarPontMaxima()
+{
+    if(pontuacao > pontuacaoMaxima){
+        pontuacaoMaxima = pontuacao;   
+        salvaPontMaximaArquivo(pontuacaoMaxima); 
+    }
+}
+
+void Jogo::salvaPontMaximaArquivo(int pontuacaoMaxima)
+{
+    std::ofstream arquivoPontMaxima("pontuacaoMaxima.txt");
+    if(arquivoPontMaxima.is_open()){
+        arquivoPontMaxima << pontuacaoMaxima;
+        arquivoPontMaxima.close();
+    }else{
+        std::cerr << "Erro ao salvar arquivo de pontuacao máxima" << std::endl;
+    }
+}
+
+int Jogo::carregaPontMaximaArquivo()
+{
+    int pontMaximaCarregada = 0;
+    std::ifstream arquivoPontMaxima("pontuacaoMaxima.txt");
+    if(arquivoPontMaxima.is_open()){
+        arquivoPontMaxima >> pontMaximaCarregada;
+        arquivoPontMaxima.close();
+    }else {
+        std::cerr << "Erro ao carregar a pontuacao maxima do arquivo" << std::endl;
+    }
+    return pontMaximaCarregada;
 }
 
 void Jogo::Restart(){

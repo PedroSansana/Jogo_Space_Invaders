@@ -46,6 +46,10 @@ int main(){
             std::string pontuacaoTexto = formataComZeros(jogo.pontuacao, 5);
             DrawTextEx(fonte, pontuacaoTexto.c_str(), {50, 40}, 34, 2, amarelo);
 
+            DrawTextEx(fonte, "PONTUACAO MAXIMA", {450, 15}, 34, 2, amarelo);
+            std::string pMaximaTexto = formataComZeros(jogo.pontuacaoMaxima, 5);
+            DrawTextEx(fonte, pMaximaTexto.c_str(), {630, 40}, 34, 2, amarelo);
+
             jogo.desenha();
         EndDrawing();
     }

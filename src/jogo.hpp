@@ -14,6 +14,7 @@ class Jogo{
         bool runJogo;
         int vidas;
         int pontuacao;
+        int pontuacaoMaxima;
     private:
         void apagaLaserInativo();
         std::vector<Obstaculo> CriarObstaculos();
@@ -25,6 +26,9 @@ class Jogo{
         void GameOver();
         void Restart();
         void iniciaJogo();
+        void checarPontMaxima();
+        void salvaPontMaximaArquivo(int pontuacaoMaxima);
+        int carregaPontMaximaArquivo();
         Nave nave;
         std::vector<Obstaculo> obstaculos;
         std::vector<Alien> aliens;
