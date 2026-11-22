@@ -171,6 +171,13 @@ void Jogo::ColisaoRetangulo()
         auto i = aliens.begin();
         while(i != aliens.end()){
             if(CheckCollisionRecs(i -> GeraRetangulo(), laser.GeraRetangulo())){
+                if(i -> tipo == 1){
+                    pontuacao += 100;
+                }else if(i -> tipo == 2){
+                    pontuacao += 200;
+                }else if(i -> tipo == 3){
+                    pontuacao += 300;
+                }
                 i = aliens.erase(i);
                 laser.ativo = false;
             }else {
@@ -191,6 +198,7 @@ void Jogo::ColisaoRetangulo()
         if(CheckCollisionRecs(naveMisteriosa.GeraRetangulo(), laser.GeraRetangulo())){
             naveMisteriosa.vivo = false;
             laser.ativo = false;
+            pontuacao += 500;
         }
     }
     
@@ -249,6 +257,7 @@ void Jogo::iniciaJogo()
     vidas = 3;
     runJogo = true;
     tempoUltimoSpawn = 0;
+    pontuacao = 0;
 }
 
 void Jogo::Restart(){

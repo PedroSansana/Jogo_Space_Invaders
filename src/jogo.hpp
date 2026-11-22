@@ -13,7 +13,7 @@ class Jogo{
         void inputUsuario();
         bool runJogo;
         int vidas;
-
+        int pontuacao;
     private:
         void apagaLaserInativo();
         std::vector<Obstaculo> CriarObstaculos();

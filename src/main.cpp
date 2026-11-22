@@ -1,5 +1,12 @@
 #include <raylib.h>
 #include "jogo.hpp"
+#include <string>
+
+std::string formataComZeros(int numero, int largura){
+    std::string textoNumero = std::to_string(numero);
+    int zeros = largura - textoNumero.length();
+    return textoNumero = std::string(zeros, '0') + textoNumero;
+}
 
 int main(){
     int deslocamento = 50;
@@ -34,6 +41,11 @@ int main(){
                 DrawTextureV(imagemNave, {x, 745}, WHITE);
                 x += 50;
             }
+
+            DrawTextEx(fonte, "PONTUACAO", {50, 15}, 34, 2, amarelo);
+            std::string pontuacaoTexto = formataComZeros(jogo.pontuacao, 5);
+            DrawTextEx(fonte, pontuacaoTexto.c_str(), {50, 40}, 34, 2, amarelo);
+
             jogo.desenha();
         EndDrawing();
     }
