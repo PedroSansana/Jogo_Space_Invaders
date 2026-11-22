@@ -11,6 +11,9 @@ class Jogo{
         void desenha();
         void atualiza();
         void inputUsuario();
+        bool runJogo;
+        int vidas;
+        int pontuacao;
     private:
         void apagaLaserInativo();
         std::vector<Obstaculo> CriarObstaculos();
@@ -19,6 +22,9 @@ class Jogo{
         void MoveAliensY(int distancia);
         void AlienAtiraLaser();
         void ColisaoRetangulo();
+        void GameOver();
+        void Restart();
+        void iniciaJogo();
         Nave nave;
         std::vector<Obstaculo> obstaculos;
         std::vector<Alien> aliens;
@@ -29,4 +35,4 @@ class Jogo{
         NaveMisteriosa naveMisteriosa;
         float intervaloSpawnMS;
         float tempoUltimoSpawn;
-};
+    };

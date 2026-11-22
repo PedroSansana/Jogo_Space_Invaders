@@ -14,10 +14,10 @@ void NaveMisteriosa::Spawna(){
     posicao.y = 90;
     int lado = GetRandomValue(0, 1);
     if(lado == 0){
-        posicao.x = 0;
+        posicao.x = 25;
         velocidade = 3;
     }else{
-        posicao.x = GetScreenWidth() - imagem.width;
+        posicao.x = GetScreenWidth() - imagem.width - 25;
         velocidade = -3;
     }
     vivo = true;
@@ -35,7 +35,7 @@ Rectangle NaveMisteriosa::GeraRetangulo()
 void NaveMisteriosa::Atualiza(){
     if(vivo){
         posicao.x += velocidade;
-        if(posicao.x > GetScreenWidth() - imagem.width || posicao.x < 0){
+        if(posicao.x > GetScreenWidth() - imagem.width - 25 || posicao.x < 25){
             vivo = false;
         }
     }
