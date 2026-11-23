@@ -15,6 +15,7 @@ int main(){
     Color cinza = {29, 29, 27, 255};
     Color amarelo = {243, 216, 63, 255};
     InitWindow(larguraJanela + deslocamento, alturaJanela + 2 * deslocamento, "Space Invaders");
+    InitAudioDevice();
 
     Font fonte = LoadFontEx("fonte/monogram.ttf", 64, 0, 0);
     Texture2D imagemNave = LoadTexture("graficos/nave.png");
@@ -25,6 +26,7 @@ int main(){
 
     while(WindowShouldClose() == false){
 
+        UpdateMusicStream(jogo.musica);
         jogo.inputUsuario();
         jogo.atualiza();
         BeginDrawing();
@@ -54,4 +56,5 @@ int main(){
         EndDrawing();
     }
     CloseWindow();
+    CloseAudioDevice();
 }
