@@ -5,7 +5,7 @@
 O trabalho consiste em desenvolver um jogo 2D simples em C++, com a biblioteca Raylib. Optamos por realizar o jogo Space Invaders, um jogo arcade de jogabilidade infinita (o fim é mediante à falha do jogador) e tiro fixo (tela de fase estática e movimento restrito a um eixo).
 
 ## Integrantes: 
-- Gabriel Colman Martins — RA: 
+- Gabriel Colman Martins — RA: 26023723
 - Lucas Van Santen Senchechem — RA: 26036723
 - Pedro Gabriel Sansana — RA: 26013823
 - Vinicius Miara Staichoki — RA:
