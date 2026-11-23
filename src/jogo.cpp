@@ -3,18 +3,16 @@
 #include <fstream>
 Jogo::Jogo()
 {
-    obstaculos = CriarObstaculos();
-    aliens = CriarAliens();
-    direcaoAliens = 1;
-    tempoUltimoAlienAtirou = 0;
-    intervaloSpawnMS = GetRandomValue(10, 20);
-    vidas = 3;
-    runJogo = true;
-    tempoUltimoSpawn = 0;
+    musica = LoadMusicStream("sons/musica.ogg");
+    somExplosao = LoadSound("sons/explosao.ogg");
+    PlayMusicStream(musica);
+
     iniciaJogo();
 }
 Jogo::~Jogo(){
     Alien::UnloadImagens();
+    UnloadMusicStream(musica);
+    UnloadSound(somExplosao);
 }
 
 void Jogo::atualiza(){
@@ -172,6 +170,7 @@ void Jogo::ColisaoRetangulo()
         auto i = aliens.begin();
         while(i != aliens.end()){
             if(CheckCollisionRecs(i -> GeraRetangulo(), laser.GeraRetangulo())){
+                PlaySound(somExplosao);
                 if(i -> tipo == 1){
                     pontuacao += 100;
                 }else if(i -> tipo == 2){
@@ -199,6 +198,7 @@ void Jogo::ColisaoRetangulo()
             }
         }
         if(CheckCollisionRecs(naveMisteriosa.GeraRetangulo(), laser.GeraRetangulo())){
+            PlaySound(somExplosao);
             naveMisteriosa.vivo = false;
             laser.ativo = false;
             pontuacao += 500;
@@ -253,7 +253,7 @@ void Jogo::GameOver()
 
 void Jogo::iniciaJogo()
 {
-     obstaculos = CriarObstaculos();
+    obstaculos = CriarObstaculos();
     aliens = CriarAliens();
     direcaoAliens = 1;
     tempoUltimoAlienAtirou = 0;

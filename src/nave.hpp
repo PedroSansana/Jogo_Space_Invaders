@@ -17,4 +17,5 @@ class Nave{
     Texture2D imagem;
     Vector2 posicao;
     double tempoUltimoTiro;
+    Sound somLaser;
 };

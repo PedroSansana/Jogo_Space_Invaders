@@ -15,6 +15,7 @@ class Jogo{
         int vidas;
         int pontuacao;
         int pontuacaoMaxima;
+        Music musica;
     private:
         void apagaLaserInativo();
         std::vector<Obstaculo> CriarObstaculos();
@@ -39,4 +40,5 @@ class Jogo{
         NaveMisteriosa naveMisteriosa;
         float intervaloSpawnMS;
         float tempoUltimoSpawn;
+        Sound somExplosao;
     };
