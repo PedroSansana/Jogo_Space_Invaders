@@ -46,6 +46,8 @@ Recorde (Highscore): A pontuação máxima alcançada é gravada automaticamente
 
 3 - Extraia o conteúdo da pasta .zip no seu computador e clique duas vezes no arquivo .exe para jogar.
 
+*Caso apareça alguma mensagem que o sistema operacional não permitiu a execução, clique em "Mais informações" e depois em "Executar mesmo assim".
+
 ### Opção 2: Compilando o Código-Fonte (VS Code + C++)
 
 1 - Clone esse repositório em sua máquina.
