@@ -8,11 +8,69 @@ O trabalho consiste em desenvolver um jogo 2D simples em C++, com a biblioteca R
 - Gabriel Colman Martins — RA: 
 - Lucas Van Santen Senchechem — RA: 26036723
 - Pedro Gabriel Sansana — RA: 26013823
-- Vinicius Miara Staichoki — RA: 
+- Vinicius Miara Staichoki — RA:
 
-## Instruções de instalação e jogabilidade:
+## Comandos e mecânicas principais
+### Comandos 
+| Comando | Ação |
+
+| Seta Esquerda | Move a nave para a esquerda |
+
+| Seta Direita | Move a nave para a direita |
+
+| Barra de espaço | Atira laser |
+
+| Tecla ENTER | Reinicia o jogo após game over |
+
+| Tecla ESC | Encerra a aplicação |
+
+### Regras e Mecânicas Principais
+
+Vidas: O jogador inicia a partida com 3 vidas.
+
+Pontuação: Alien Tipo 1 (Inferior): 100 pontos; Alien Tipo 2 (Médio): 200 pontos; Alien Tipo 3 (Superior): 300 pontos
+
+Nave Misteriosa: 500 pontos
+
+Barreiras de Proteção:4 obstáculos formados por blocos destrutíveis de 3x3 pixels sofrem degradação progressiva a cada impacto de laser.
+
+Recorde (Highscore): A pontuação máxima alcançada é gravada automaticamente no arquivo local \`recorde.txt\` e lida a cada nova execução do jogo.
+
+
+## Instruções de instalação:
+### Opção 1: Executável Pré-compilado (Release) 
+
+1 - Acesse a aba [Releases](https://github.com/PedroSansana/Jogo\_Space\_Invaders/releases) do repositório. 
+
+2 - Faça o download do arquivo executável (.exe). 
+
+3 - Execute o jogo diretamente em seu sistema operacional Windows.
+
+### Opção 2: Compilando o Código-Fonte (VS Code + C++)
+
+1 - Clone esse repositório em sua máquina.
+
+2- Certifique-se de ter o compilador C++ (ex: MinGW/GCC) e a biblioteca Raylib instalados no seu ambiente.
+
+3 - Abra a pasta do projeto no Visual Studio Code.
+
+4 - Abra o arquivo `src/main.cpp` e execute o build/compilação (ou pressione `F5` se configurado) para rodar o jogo.
+
+
 
 ## Tecnologias utilizadas:
+* **Linguagem:** C++
+* **Biblioteca Gráfica e de Áudio:** [Raylib](https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fwww.raylib.com%2F)
+* **Ambiente de Desenvolvimento:** Visual Studio Code
+* **Controle de Versão:** Git &amp; GitHub
 
 ## Transparência de IA:
-Na parte inicial, utilizamos a IA para auxiliar na instalação da biblioteca Raylib.
+Declaramos que o uso de ferramentas de Inteligência Artificial no desenvolvimento deste projeto ficou restrito exclusivamente ao auxílio inicial na instalação da biblioteca Raylib e na configuração do ambiente de desenvolvimento C++ no VS Code.
+
+Nenhuma lógica de jogo, algoritmo de colisão, gerenciamento de memória ou estrutura de classes foi gerada automaticamente por IA. Todo o código foi estudado, compreendido e implementado manualmente pelos integrantes do grupo.
+
+##  Créditos 
+
+- Tutorial Base: Canal do YouTube [Programming With Nick](https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fwww.youtube.com%2F%40ProgrammingWithNick), que disponibilizou o tutorial educacional que serviu de referência lógica para a reconstrução do jogo.
+- Trilha Sonora: Trilha musical de fundo composta e disponibilizada por Spyros.
+- Biblioteca Gráfica: [Raylib](https://www.google.com/url?sa=E&amp;q=https%3A%2F%2Fwww.raylib.com%2F) por Ramon Santamaria.
