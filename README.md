@@ -42,9 +42,9 @@ Recorde (Highscore): A pontuação máxima alcançada é gravada automaticamente
 
 1 - Acesse a aba [Releases](https://github.com/PedroSansana/Jogo\_Space\_Invaders/releases) do repositório. 
 
-2 - Faça o download do arquivo executável (.exe). 
+2 - Faça o download do arquivo \`SpaceInvaders\_v1.0\_Windows.zip\`. 
 
-3 - Execute o jogo diretamente em seu sistema operacional Windows.
+3 - Extraia o conteúdo da pasta \`.zip\` no seu computador e clique duas vezes no arquivo \`.exe\` para jogar.
 
 ### Opção 2: Compilando o Código-Fonte (VS Code + C++)
 
